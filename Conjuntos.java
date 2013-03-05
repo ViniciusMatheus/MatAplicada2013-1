@@ -1,3 +1,4 @@
+
 package ...;
 
 import java.util.ArrayList;
@@ -12,26 +13,47 @@ public class Conjunto<Tipo>
         conjunto = new ArrayList<>();
     }
     
-    public void setElemento(Tipo elemento)
+    public void adicionar(Tipo elemento)
     {
         conjunto.add(elemento);
     }
     
-    public void getElemento()
+    public void remover(Tipo elemento)
     {
-        System.out.println(conjunto.toString());
+        conjunto.remove(elemento);
     }
     
-    public void pertinencia(Tipo valor, Conjunto conjunto)
+    public void limparConjunto()
+    {
+        this.conjunto.clear();
+    }
+    
+    public boolean ehVazio()
+    {
+        if(this.conjunto.isEmpty())
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+    
+    public String getCOnjunto()
+    {
+        return this.conjunto.toString();
+    }
+    
+    public boolean pertinencia(Tipo valor)
     {
         if(this.conjunto.contains(valor))
         {
-            System.out.println("Elemento " + valor + " pertence ao conjunto " + conjunto);
+            return true;
         }
         else
         {
-            System.out.println("Elemento " + valor + " não pertence ao conjunto " + conjunto);
+            return false;
         }
     }
 }
-
