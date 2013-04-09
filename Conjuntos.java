@@ -1,5 +1,5 @@
 
-package ...;
+package [sua package];
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,12 @@ public class Conjunto<Tipo extends Comparable>
         return this.conjunto.toString();
     }
     
-    public boolean igualdade(Conjunto b)
+    
+//    operações com comjuntos
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+    
+    public boolean igualdade(Conjunto b) //100%
     {
         if(b.conjunto.equals(this.conjunto))
         {
@@ -57,14 +62,14 @@ public class Conjunto<Tipo extends Comparable>
         }
     }
       
-      public int cardinalidade()
+      public int cardinalidade() //100%
       {
           return this.conjunto.size();
       }
      
     
 //    verifica se um elemento pertence ao conjunto
-    public boolean pertinencia(Tipo valor)
+    public boolean pertinencia(Tipo valor) //100%
     {
         if(this.conjunto.contains(valor))
         {
@@ -77,7 +82,7 @@ public class Conjunto<Tipo extends Comparable>
     }   
     
 // verifica se o conjunto que chama o metodo esta contido no conjunto que é passado;
-    public boolean continecia(Conjunto c)
+    public boolean continecia(Conjunto c) //100%
     {
        for(Tipo elemento: conjunto)
         {
@@ -90,64 +95,68 @@ public class Conjunto<Tipo extends Comparable>
     }
     
 //    une dois conjuntos
-    public String uniao(Conjunto b)
+    public String uniao(Conjunto b) //100%
     {
         Conjunto c = new Conjunto();
-        
-        for(Tipo elemento: conjunto)
+                
+        for (int i = 0; i < conjunto.size(); i++)
         {
-            int i = 0;
-            if(!b.conjunto.contains(this.conjunto))
-            {
-                c.adicionar(this.conjunto.get(i));
-            }
-            i++;
+                if(conjunto.contains(b.conjunto.get(i)))
+                {
+                    c.adicionar(conjunto.get(i));
+                }
+                else
+                {
+                    c.adicionar(conjunto.get(i));
+                    c.adicionar(b.conjunto.get(i).toString());
+                }
         }
         
         return c.getConjunto();
     }
     
-    public String intersecao(Conjunto b)
+    public String intersecao(Conjunto b) // 100%
     {
         Conjunto c = new Conjunto();
-        
-        for(Tipo elemento: conjunto)
+                
+        for (int i = 0; i < conjunto.size(); i++)
         {
-            int i = 0;
-            if(b.conjunto.contains(this.conjunto))
-            {
-                c.adicionar(this.conjunto.get(i));
-            }
-            i++;
+                if(conjunto.contains(b.conjunto.get(i)))
+                {
+                    c.adicionar(conjunto.get(i));
+                }
         }
         
         return c.getConjunto();
     }
     
-    public String diferenca(Conjunto b)
+    public String diferenca(Conjunto b) // 100%
     {
         Conjunto c = new Conjunto();
-        
-        for(Tipo elemento: conjunto)
+                
+        for (int i = 0; i < conjunto.size(); i++)
         {
-            int i = 0;
-            if(!b.conjunto.contains(this.conjunto))
-            {
-                c.adicionar(this.conjunto.get(i));
-            }
-            i++;
+                if(!conjunto.contains(b.conjunto.get(i)))
+                {
+                    c.adicionar(conjunto.get(i));
+                    c.adicionar(b.conjunto.get(i).toString());
+                }
         }
         
         return c.getConjunto();
     }
     
-    public String produtoCartesiano(Conjunto b)
+    public String produtoCartesiano(Conjunto b) // 100%
     {
         Conjunto c = new Conjunto();
-        
-        for (Tipo elemento: conjunto)
+                
+        for (int i = 0; i<conjunto.size(); i++)
         {
-            c.adicionar("<" + b.conjunto + "," + this.conjunto + ">");
+            for (int j = 0; j<conjunto.size(); j++)
+            {
+                c.adicionar("<" + b.conjunto.get(i) + "," + conjunto.get(j) + ">");
+               
+            }
         }
         
         return c.getConjunto();
